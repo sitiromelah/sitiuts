@@ -1,10 +1,10 @@
 package com.siti.sitiuts.models;
 
-public class Menu {
+public class MenuLogo {
     String logo;
     String name;
 
-    public Menu(String s, String kopi) {
+    public MenuLogo(String s, String kopi) {
         this.logo = s;
         this.name = kopi;
     }

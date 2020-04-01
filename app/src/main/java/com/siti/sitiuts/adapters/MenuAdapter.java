@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.siti.sitiuts.R;
-import com.siti.sitiuts.models.Menu;
+import com.siti.sitiuts.models.MenuLogo;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -19,9 +19,9 @@ import java.util.List;
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
 
     private Context context;
-    private List<Menu> items;
+    private List<MenuLogo> items;
 
-    public MenuAdapter(Context context, List<Menu> items) {
+    public MenuAdapter(Context context, List<MenuLogo> items) {
         this.context = context;
         this.items = items;
     }
@@ -31,12 +31,12 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
     public MenuAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context)
                 .inflate(R.layout.item_menu, parent, false);
-        return new ViewHolder(view);
+        return new MenuAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MenuAdapter.ViewHolder holder, int position) {
-        Menu item = items.get(position);
+        MenuLogo item = items.get(position);
         // Atur image di baris ini, dapat menggunakan Picasso atau Glide
         Picasso.get().load(item.getLogo()).into(holder.logoImage);
         holder.nameText.setText(item.getName());
