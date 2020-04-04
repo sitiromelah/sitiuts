@@ -4,9 +4,9 @@ public class MenuLogo {
     String logo;
     String name;
 
-    public MenuLogo(String s, String kopi) {
+    public MenuLogo(String s, String coffee) {
         this.logo = s;
-        this.name = kopi;
+        this.name = coffee;
     }
 
     public String getLogo() {

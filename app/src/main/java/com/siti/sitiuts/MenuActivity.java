@@ -26,11 +26,14 @@ public class MenuActivity extends AppCompatActivity {
         RecyclerView menusView = findViewById(R.id.rv_menus);
 
         List<MenuLogo> menus = new ArrayList<>();
-        menus.add(new MenuLogo("https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/360px-Liverpool_FC.svg.png", "Americano"));
-        menus.add(new MenuLogo("https://id.pinterest.com/pin/125819383309141902/?nic_v1=1aeDpwwqmQYqS5XX1U8Ox05J6hnZd3DQEFifEH9zdsNnyBYqDJn1ipEbSdF1tRL0LT", "Cappuccino"));
-        menus.add(new MenuLogo("https://id.pinterest.com/pin/574631233677348199/?nic_v1=1aDfveAmJK3P1DY7I7nyl7bTf5cS676fi7zrMFD1RI79BX0LLsH7%2FVhop2pqzsULJ7", "Doppio"));
-        menus.add(new MenuLogo("https://id.pinterest.com/pin/569775790340125033/?nic_v1=1akMTcHl%2BQQ75sS%2BO5TaOLqDHLhBqV1eAWRi%2FurI54DR%2FTkx0YRyIxo02KdqQC08jB", "Lungo"));
-        menus.add(new MenuLogo("https://id.pinterest.com/pin/87820261457571005/?nic_v1=1a%2BsBHnZ7MRP28Mh6CYV5LZuNBXSti4dsuS7esPkhvc84QmLrhIRwU6M5uE6VcE0bK", "Coffee"));
+        menus.add(new MenuLogo("https://upload.wikimedia.org/wikipedia/commons/1/19/Affogato.JPG", "Affogato"));
+        menus.add(new MenuLogo("https://upload.wikimedia.org/wikipedia/commons/b/b4/Americano.jpg", "Americano"));
+        menus.add(new MenuLogo("https://upload.wikimedia.org/wikipedia/commons/1/16/Classic_Cappuccino.jpg", "Cappuccino"));
+        menus.add(new MenuLogo("https://upload.wikimedia.org/wikipedia/commons/4/41/Espresso_BW_1.jpg", "Espresso"));
+        menus.add(new MenuLogo("https://upload.wikimedia.org/wikipedia/commons/9/92/Echo_Coffee_-_Latte.jpg", "Latte"));
+        menus.add(new MenuLogo("https://upload.wikimedia.org/wikipedia/commons/2/2b/Lungo_coffee.jpg", "Lungo"));
+        menus.add(new MenuLogo("https://upload.wikimedia.org/wikipedia/commons/a/ab/Macchiato_BlueBottle_1.jpg", "Macchiato"));
+        menus.add(new MenuLogo("https://upload.wikimedia.org/wikipedia/commons/8/8c/Coffee_Latte.jpg", "Ristretto"));
 
         MenuAdapter adapter = new MenuAdapter(this, menus);
         menusView.setAdapter(adapter);
