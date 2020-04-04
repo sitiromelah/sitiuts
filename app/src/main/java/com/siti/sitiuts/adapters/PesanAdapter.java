@@ -9,15 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.siti.sitiuts.R;
-import com.siti.sitiuts.models.Pesan;
+import com.siti.sitiuts.models.Order;
 
 import java.util.List;
 
 public class PesanAdapter extends RecyclerView.Adapter<PesanAdapter.ViewHolder> {
-    private List<Pesan> items;
+    private List<Order> items;
     private OnItemPesanListener listener;
 
-    public PesanAdapter(List<Pesan> items, OnItemPesanListener listener) {
+    public PesanAdapter(List<Order> items, OnItemPesanListener listener) {
         this.items = items;
         this.listener = listener;
 
@@ -31,7 +31,7 @@ public class PesanAdapter extends RecyclerView.Adapter<PesanAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull PesanAdapter.ViewHolder holder, int position) {
-        Pesan item = items.get(position);
+        Order item = items.get(position);
         holder.bind(position, item);
     }
 
@@ -41,23 +41,23 @@ public class PesanAdapter extends RecyclerView.Adapter<PesanAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView namaPemesan;
-        TextView nomorMeja;
-        TextView pesanKopi;
-        TextView jumlahPesanan;
+        TextView namaText;
+        TextView nomorText;
+        TextView pesanText;
+        TextView jumlahText;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            namaPemesan = itemView.findViewById(R.id.text_nama);
-            nomorMeja = itemView.findViewById(R.id.text_nomor);
-            pesanKopi = itemView.findViewById(R.id.text_pesan);
-            jumlahPesanan = itemView.findViewById(R.id.text_jumlah);
+            namaText = itemView.findViewById(R.id.text_nama);
+            nomorText = itemView.findViewById(R.id.text_nomor);
+            pesanText = itemView.findViewById(R.id.text_pesan);
+            jumlahText = itemView.findViewById(R.id.text_jumlah);
         }
 
-        public void bind(final int index, final Pesan item) {
-            namaPemesan.setText(item.getNama());
-            nomorMeja.setText(item.getNomor());
-            pesanKopi.setText(item.getPesan());
-            jumlahPesanan.setText(item.getJumlah());
+        public void bind(final int index, final Order item) {
+            namaText.setText(item.getNama());
+            nomorText.setText(item.getNomor());
+            pesanText.setText(item.getPesan());
+            jumlahText.setText(item.getJumlah());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -67,6 +67,6 @@ public class PesanAdapter extends RecyclerView.Adapter<PesanAdapter.ViewHolder> 
         }
     }
     public interface OnItemPesanListener {
-        void onPesanClicked(int index, Pesan item);
+        void onPesanClicked(int index, Order item);
     }
 }

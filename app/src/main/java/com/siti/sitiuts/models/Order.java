@@ -3,21 +3,22 @@ package com.siti.sitiuts.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Pesan implements Parcelable {
+public class Order implements Parcelable {
 
     private String nama;
     private String nomor;
     private String pesan;
     private String jumlah;
 
-    public Pesan (){
-    }
-
-    public Pesan(String nama, String nomor, String pesan, String jumlah) {
+    public Order(String nama, String nomor, String pesan, String jumlah) {
         this.nama = nama;
         this.nomor = nomor;
         this.pesan = pesan;
         this.jumlah = jumlah;
+    }
+
+    public Order() {
+
     }
 
     public String getNama() {
@@ -52,22 +53,22 @@ public class Pesan implements Parcelable {
         this.jumlah = jumlah;
     }
 
-    protected Pesan(Parcel in) {
+    protected Order(Parcel in) {
         this.nama = in.readString();
         this.nomor = in.readString();
         this.pesan = in.readString();
         this.jumlah = in.readString();
     }
 
-    public static final Creator<Pesan> CREATOR = new Creator<Pesan>() {
+    public static final Creator<Order> CREATOR = new Creator<Order>() {
         @Override
-        public Pesan createFromParcel(Parcel source) {
-            return new Pesan(source);
+        public Order createFromParcel(Parcel source) {
+            return new Order(source);
         }
 
         @Override
-        public Pesan[] newArray(int size) {
-            return new Pesan[size];
+        public Order[] newArray(int size) {
+            return new Order[size];
         }
     };
 

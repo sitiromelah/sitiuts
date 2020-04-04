@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_dark"
+    android:background="#ac6730"
     tools:context=".TambahPesanActivity">
 
     <TextView
@@ -68,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="e.g: Kopi Original"
+        android:hint="e.g: Affogato"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorLightGray"
         android:textColorLink="@color/colorWhite"
@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="@android:color/holo_red_dark"
-        android:onClick="button_onClick"
+        android:onClick="handleSimpan"
         android:text="Simpan"
         android:textColor="@color/colorWhite"
         app:layout_constraintHorizontal_bias="0.0"
@@ -117,17 +117,30 @@
         tools:ignore="OnClick" />
 
     <Button
+        android:id="@+id/btnHapus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorWarning"
+        android:onClick="handleHapus"
+        android:text="Hapus"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSimpan"
+        tools:ignore="OnClick" />
+    <Button
         android:id="@+id/btnBatal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_red_dark"
-        android:onClick="button_onClick"
+        android:onClick="handleBatal"
         android:text="Batal"
         android:textColor="@color/colorWhite"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSimpan"
+        app:layout_constraintTop_toBottomOf="@+id/btnHapus"
         tools:ignore="OnClick" />
 </androidx.constraintlayout.widget.ConstraintLayout>
