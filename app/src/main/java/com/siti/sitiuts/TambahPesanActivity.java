@@ -1,86 +1,113 @@
 package com.siti.sitiuts;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.siti.sitiuts.models.Order;
+import com.siti.sitiuts.entities.Pesan;
+import com.siti.sitiuts.models.PesanModel;
 
 public class TambahPesanActivity extends AppCompatActivity {
 
-    private EditText NamaInput;
-    private EditText NomorInput;
-    private EditText PesanInput;
-    private EditText JumlahInput;
+    //Data
+    private PesanModel mKontak;
+    // Komponen
+    private EditText txtNama;
+    private EditText txtNomor;
+    private EditText txtPesan;
+    private EditText txtJumlah;
+    private Button btnSimpan;
     private Button btnBatal;
-    private Order item;
-    private int index;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_pesan);
+        this.initData();
+        this.initComponents();
+    }
+    private void initData()
+    {
+        this.mKontak = new PesanModel(this);
+    }
+    private void initComponents()
+    {
+        this.txtNama = (EditText) this.findViewById(R.id.txtNama);
+        this.txtNomor = (EditText) this.findViewById(R.id.txtNomor);
+        this.txtPesan = (EditText) this.findViewById(R.id.txtPesan);
+        this.txtJumlah = (EditText) this.findViewById(R.id.txtJumlah);
+        this.btnSimpan = (Button) this.findViewById(R.id.btnSimpan);
+        this.btnBatal = (Button) this.findViewById(R.id.btnBatal);
+    }
+    public void button_onClick(View view) {
+        Button b = (Button) view;
+        if(b == this.btnSimpan) {
+            this.tambahKontak();
+        }
 
-        NamaInput = findViewById(R.id.txtNama);
-        NomorInput = findViewById(R.id.txtNomor);
-        PesanInput = findViewById(R.id.txtPesan);
-        JumlahInput = findViewById(R.id.txtJumlah);
+        //if (txtNama.getText().toString().length() == 0) {
+        //txtNama.setError("Isi Nama Terlebih dahulu!");
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            item = extras.getParcelable(PesanActivity.PESAN_KEY);
-            index = extras.getInt(PesanActivity.INDEX_KEY, 0);
-            NamaInput.setText(item.getNama());
-            NomorInput.setText(item.getNomor());
-            PesanInput.setText(item.getPesan());
-            JumlahInput.setText(item.getJumlah());
+        //} if(txtNomor.getText().toString().length() == 0) {
+        //txtNomor.setError("Isi Nomor Terlebih dahulu");
+
+        //} else if (b == this.btnSimpan){
+        //this.tambahKontak();
+        //}
+
+        if (b == btnBatal){
+            this.finish();
         }
     }
+    private void tambahKontak()
+    {
 
-    public void handleSimpan(View view) {
-        String nama = NamaInput.getText().toString();
-        String nomor = NomorInput.getText().toString();
-        String pesan = PesanInput.getText().toString();
-        String jumlah = JumlahInput.getText().toString();
+        String nama = this.txtNama.getText().toString();
+        String nomor = this.txtNomor.getText().toString();
+        String pesan = this.txtPesan.getText().toString();
+        String jumlah = this.txtJumlah.getText().toString();
 
-        item.setNama(nama);
-        item.setNomor(nomor);
-        item.setPesan(pesan);
-        item.setJumlah(jumlah);
+        Pesan kontakBaru = new Pesan();
+        kontakBaru.setNama(nama);
+        kontakBaru.setNomor(nomor);
+        kontakBaru.setPesan(pesan);
+        kontakBaru.setJumlah(jumlah);
 
-        if (nama.equals("") && nomor.equals("") && pesan.equals("") && jumlah.equals("")) {
+        //this.mKontak.insert(kontakBaru);
+
+        //Toast.makeText(this, "Kontak Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
+
+        //this.btnBatal.setText("Kembali");
+
+        if(nama.equals("") && nomor.equals("") && pesan.equals("") && jumlah.equals("")){
             Toast.makeText(getApplicationContext(), "Input yang anda masukan kosong",
                     Toast.LENGTH_SHORT).show();
-        } else if (nama.equals("")) {
+        }
+        else if(nama.equals("")){
             Toast.makeText(getApplicationContext(), "Input nama anda masukan kosong",
                     Toast.LENGTH_SHORT).show();
-        } else if (nomor.equals("")) {
+        }
+        else if(nomor.equals("")) {
             Toast.makeText(getApplicationContext(), "Input nomor anda masukan kosong",
                     Toast.LENGTH_SHORT).show();
-        } else if (pesan.equals("")) {
+        }else if(pesan.equals("")){
             Toast.makeText(getApplicationContext(), "Input pesan anda masukan kosong",
                     Toast.LENGTH_SHORT).show();
-        } else if (jumlah.equals("")) {
+        }
+        else if(jumlah.equals("")) {
             Toast.makeText(getApplicationContext(), "Input jumlah anda masukan kosong",
                     Toast.LENGTH_SHORT).show();
-        } else {
-            Intent intent = new Intent();
-            intent.putExtra(PesanActivity.PESAN_KEY, item);
-            intent.putExtra(PesanActivity.INDEX_KEY, index);
-            setResult(RESULT_OK, intent);
-            finish();
+        }
+
+        else{
+            this.mKontak.insert(kontakBaru);
+
+            Toast.makeText(this, "Kontak Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
+
             this.btnBatal.setText("Kembali");
         }
-    }
-
-    public void handleHapus(View view) {
-    }
-
-    public void handleBatal(View view) {
     }
 }
